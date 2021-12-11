@@ -29,30 +29,45 @@ p {
 
 #red {
 	background-color: red;
+	left: 50%;
+	top: 0%;
 }
 
 #orange {
 	background-color: orange;
+	left: 0%;
+	top: 50%;
+	
 }
 
 #yellow {
 	background-color: yellow;
+	left: 0%;
+	top: 80%;
 }
 
 #green {
 	background-color: green;
+	left:20%;
+	bottom: 0%;
 }
 
 #blue {
 	background-color: blue;
+	right: 0%;
+	bottom: 0%;
 }
 
 #indigo {
 	background-color: indigo;
+	right: 0%;
+	top: 80%;
 }
 
 #violet {
 	background-color: violet;
+	right: 0%;
+	top: 50%;
 }
 
 /* Gameboard */
