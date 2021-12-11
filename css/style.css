@@ -1,24 +1,101 @@
-/* Font Information
+/* Landing Page Spaceing */
 
-Shuriken-std
-font-family: shuriken-std, sans-serif;
-font-weight: 400;
-font-style: normal;
+body {
+	padding: 0px;
+	margin: 0px;
+}
 
-Platelet Thin
-font-family: platelet, sans-serif;
-font-weight: 200;
-font-style: normal;
+.dropdown {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #fffcf3;
+	padding: 20px;
+	width: 100vW;
+	top: -110px;
+}
 
-Platelet Regular
-font-family: platelet, sans-serif;
-font-weight: 400;
-font-style: normal;
+.dropdown-active {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #fffcf3;
+	padding: 20px;
+	width: 100vW;
+	top: 0px;
+}
 
-Platelet Heavy
-font-family: platelet, sans-serif;
-font-weight: 700;
-font-style: normal;
+.down-arrow {
+	width: 50px;
+	padding: 20px;
+}
 
-*/
+.intro {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px;
+	width: 100vW;
+}
 
+/* Input */
+
+input {
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.4);
+	border: .5px solid #000000;
+}
+
+input[type=text] {
+	color: #ffffff;
+	font-family: platelet, sans-serif;
+	font-size: 1em;
+	text-align: center;
+}
+
+input::-webkit-input-placeholder {
+	color: #000000;
+	font-family: platelet, sans-serif;
+	font-size: 1em;
+	text-align: center;
+}
+
+/* Fonts */
+
+h1 {
+	font-family: shuriken-std, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 4em;
+	color: #ffffff;
+	text-shadow: 2px 2px #000000;
+	-webkit-text-stroke: .5px #000000;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-family: shuriken-std, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 2em;
+	color: #ffffff;
+	text-shadow: 2px 2px #000000;
+	-webkit-text-stroke: .5px #000000;
+	text-transform: uppercase;
+}
+
+p {
+	font-family: platelet, sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	color: #000;
+}
+
+.dropdown p {
+	margin-top: -20px;
+}
