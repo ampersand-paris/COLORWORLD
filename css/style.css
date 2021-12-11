@@ -1,37 +1,33 @@
 /* Landing Page Spaceing */
 
 body {
-	padding: 0px;
 	margin: 0px;
 }
 
-.dropdown {
+.instructions {
 	position: relative;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	background-color: #fffcf3;
-	padding: 20px;
-	width: 100vW;
-	top: -110px;
+	padding: 20px 60px;
+	margin-top: 0px;
 }
 
-.dropdown-active {
-	position: relative;
+.active {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background-color: #fffcf3;
-	padding: 20px;
-	width: 100vW;
-	top: 0px;
+}
+
+.turn {
+	transform: rotate(180deg);
 }
 
 .down-arrow {
 	width: 50px;
 	padding: 20px;
+	display: block;
+	margin: auto;
 }
 
 .intro {
@@ -40,7 +36,6 @@ body {
 	align-items: center;
 	flex-direction: column;
 	padding: 20px;
-	width: 100vW;
 }
 
 /* Input */
@@ -51,17 +46,28 @@ input {
 	border: .5px solid #000000;
 }
 
+input:focus {
+	outline-color: #fffcf3;
+}
+
 input[type=text] {
 	color: #ffffff;
 	font-family: platelet, sans-serif;
-	font-size: 1em;
+	font-size: 1.25em;
+	text-align: center;
+}
+
+input[type=submit] {
+	color: #000000;
+	font-family: platelet, sans-serif;
+	font-size: 1.25em;
 	text-align: center;
 }
 
 input::-webkit-input-placeholder {
 	color: #000000;
 	font-family: platelet, sans-serif;
-	font-size: 1em;
+	font-size: 1.25em;
 	text-align: center;
 }
 
@@ -93,9 +99,12 @@ p {
 	font-family: platelet, sans-serif;
 	font-weight: 200;
 	font-style: normal;
+	line-height: 1em;
 	color: #000;
 }
 
-.dropdown p {
-	margin-top: -20px;
+.instructions p {
+	margin-top: 0px;
+	width: 50%;
+	padding-bottom: 10px;
 }

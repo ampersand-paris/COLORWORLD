@@ -1,0 +1,68 @@
+/* blob */
+
+#blob {
+	width: 10%;
+}
+
+/* Color divs */
+
+.color {
+	border: 1px solid #000000;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	position: absolute;
+}
+
+#red {
+	background-color: red;
+}
+
+#orange {
+	background-color: orange;
+}
+
+#yellow {
+	background-color: yellow;
+}
+
+#green {
+	background-color: green;
+}
+
+#blue {
+	background-color: blue;
+}
+
+#indigo {
+	background-color: indigo;
+}
+
+#violet {
+	background-color: violet;
+}
+
+/* Gameboard */
+
+.gameboard {
+	background: 
+		radial-gradient(circle at center, rgba(255, 255, 255, 0.527), transparent),
+		radial-gradient(circle at top center, red, transparent),
+		radial-gradient(circle at top left, orange, transparent),
+		radial-gradient(circle at center left, yellow, transparent),
+		radial-gradient(circle at bottom left, green, transparent),
+		radial-gradient(circle at bottom center, blue, transparent),
+		radial-gradient(circle at bottom right, indigo, transparent),
+		radial-gradient(circle at center right, violet, transparent);
+	background-size: cover;	
+}
+
+html {
+	min-height: 100%;
+	/*
+    min-height: 400%;
+	min-width: 100%;
+	*/
+}
+
+/*radial-gradient(shape size at position, start-color, ..., last-color)*/
