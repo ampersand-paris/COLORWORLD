@@ -37,13 +37,28 @@ $('.down-arrow').click(function() {
 	$('.down-arrow').toggleClass('turn');
 })
 
-$('')
+// Submit
+
+$('form').on('submit', (event) => {
+	event.preventDefault()
+	let userName = $('input[type="text"]').val();
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html')
+	sessionStorage.setItem("blobName", userName)
+});
+
+// Blob Name
+
+$(document).ready(function() {
+	let blobName = sessionStorage.getItem("blobName");
+	let blobEl = $(`<p>${blobName}<p>`)
+	$('#blob').after(blobEl)
+})
 
 // Navigate with keys
 
 var objImage = null;
 function init() {
-	objImage = $('#blob');
+	objImage = $('.blob-div');
 	objImage.css('position', 'relative');
 	objImage.css('top', '0px');
 	objImage.css('left', '0px');

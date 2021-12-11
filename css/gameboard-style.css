@@ -1,9 +1,22 @@
 /* blob */
 
 #blob {
-	width: 10%;
+	width: 100px;
 }
 
+.blob-div{
+	width: 100px;
+}
+
+p {
+	position: absolute;
+	font-family: platelet, sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	color: #000;
+	top: 10px;
+	left: 50px;
+}
 /* Color divs */
 
 .color {
