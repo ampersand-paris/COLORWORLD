@@ -1,0 +1,36 @@
+body {
+	background: rgb(26, 26, 26);
+	display: flex;
+	width: 100vW;
+	height: 100vH;
+	justify-content: center;
+	align-items: center;
+}
+
+.gameover {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+button {
+	display: block;
+	margin: 20px;
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.4);
+	border: .5px solid #ffffff;
+	font-family: platelet, sans-serif;
+	font-size: 1.25em;
+	text-align: center;
+	color: #ffffff;
+}
+h1 {
+	font-family: shuriken-std, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 4em;
+	color: #ffffff;
+	text-shadow: 2px 2px #000000;
+	-webkit-text-stroke: .5px #000000;
+	text-transform: uppercase;
+}
