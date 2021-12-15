@@ -37,13 +37,52 @@ $('.down-arrow').click(function() {
 	$('.down-arrow').toggleClass('turn');
 })
 
+// Set Timer
+
+const gameOver = () => {
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/reset.html')
+	sessionStorage.clear()
+	console.log('hello')
+}
+
+let gradientInterval = 0;
+
+const nightFall = () => {
+	//opacity
+	let opacity = parseFloat($('#night').css('opacity'));
+	let interval = opacity + .04;
+	$('#night').css('opacity', interval)
+	//gradient
+	if (gradientInterval === 0) {
+		gradientInterval = .05;
+		sessionStorage.setItem("gradient", gradientInterval);
+	} else if (gradientInterval > 0) {
+		gradientInterval = parseFloat(sessionStorage.getItem("gradient")) + .04 * 100;
+		sessionStorage.setItem("gradient", gradientInterval);
+	}	
+	$('#night').css('background', `linear-gradient(to top right, #000000 ${gradientInterval}%, transparent`);
+	// $('#night').css('opacity', `${opacity} + .5`);
+	//sessionStorage.clear()
+	console.log(gradientInterval)
+}
+
+nightFall()
+
+if (location.href == "file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html") {
+	$(window).ready(setTimeout(gameOver, 120000));
+	// for (let i = 0; i < 100; i++) {
+	// let percentage = i;
+	$(window).ready(setInterval(nightFall, 5000))
+}
+
+
 // Submit
 
 $('form').on('submit', (event) => {
 	event.preventDefault()
 	let userName = $('input[type="text"]').val();
 	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html')
-	sessionStorage.setItem("blobName", userName)
+	sessionStorage.setItem("blobName", userName);
 });
 
 // Blob Name
@@ -52,6 +91,7 @@ $(document).ready(function() {
 	let blobName = sessionStorage.getItem("blobName");
 	let blobEl = $(`<p>${blobName}<p>`)
 	$('#blob').after(blobEl)
+	
 })
 
 // Navigate with keys
@@ -143,11 +183,3 @@ window.onload = init;
 //     $( 'body' ).append( html );
 // });
 
-// Set Timer
-
-const gameOver = () => {
-	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/reset.html')
-	console.log('hello')
-}
-
-$('#blob').ready(setTimeout(gameOver, 120000))
