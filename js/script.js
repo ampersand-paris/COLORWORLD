@@ -68,18 +68,23 @@ function getKeyAndMove(e) {
 	switch (key_code) {
 		case 37: //left arrow key
 			moveLeft();
+			getPositions()
 			break;
 		case 38: //Up arrow key
 			moveUp();
+			getPositions()
 			break;
 		case 39: //right arrow key
 			moveRight();
+			getPositions()
 			break;
 		case 40: //down arrow key
 			moveDown();
+			getPositions()
 			break;
 	}
 }
+
 function moveLeft() {
 	objImage.css('left', parseInt(objImage.css('left')) - 5 + "px");
 }
@@ -94,42 +99,55 @@ function moveDown() {
 	console.log('right')
 	objImage.css('top', parseInt(objImage.css('top')) + 5 + "px");
 }
+function getPositions() {
+    var pos, width, height;
+    pos = $('.blob-div').position();
+    width = $('.blob-div').width();
+    height = $('.blob-div').height();
+    console.log([pos.left, pos.left + width]);
+}
+
 
 window.onload = init;
 
 // Overlap Detection 
 
-var overlaps = (function () {
-    function getPositions( elem ) {
-        var pos, width, height;
-        pos = $( elem ).position();
-        width = $( elem ).width();
-        height = $( elem ).height();
-        return [ [ pos.left, pos.left + width ], [ pos.top, pos.top + height ] ];
-    }
 
-    function comparePositions( p1, p2 ) {
-        var r1, r2;
-        r1 = p1[0] < p2[0] ? p1 : p2;
-        r2 = p1[0] < p2[0] ? p2 : p1;
-        return r1[1] > r2[0] || r1[0] === r2[0];
-    }
-
-    return function ( a, b ) {
-        var pos1 = getPositions( a ),
-            pos2 = getPositions( b );
-        return comparePositions( pos1[0], pos2[0] ) && comparePositions( pos1[1], pos2[1] );
-    };
-})();
-
-$(function () {
-    var area = $( '#area' )[0],
-        box = $( '#box0' )[0],
-        html;
+// var overlaps = (function () {
     
-    html = $( area ).children().not( box ).map( function ( i ) {
-        return '<p>Red box + Box ' + ( i + 1 ) + ' = ' + overlaps( box, this ) + '</p>';
-    }).get().join( '' );
+//     }
 
-    $( 'body' ).append( html );
-});
+//     function comparePositions( p1, p2 ) {
+//         var r1, r2;
+//         r1 = p1[0] < p2[0] ? p1 : p2;
+//         r2 = p1[0] < p2[0] ? p2 : p1;
+//         return r1[1] > r2[0] || r1[0] === r2[0];
+//     }
+
+//     return function ( a, b ) {
+//         var pos1 = getPositions( a ),
+//             pos2 = getPositions( b );
+//         return comparePositions( pos1[0], pos2[0] ) && comparePositions( pos1[1], pos2[1] );
+//     };
+// })();
+
+// $(function () {
+//     var area = $( '#area' )[0],
+//         box = $( '#box0' )[0],
+//         html;
+    
+//     html = $( area ).children().not( box ).map( function ( i ) {
+//         return '<p>Red box + Box ' + ( i + 1 ) + ' = ' + overlaps( box, this ) + '</p>';
+//     }).get().join( '' );
+
+//     $( 'body' ).append( html );
+// });
+
+// Set Timer
+
+const gameOver = () => {
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/reset.html')
+	console.log('hello')
+}
+
+$('#blob').ready(setTimeout(gameOver, 120000))
