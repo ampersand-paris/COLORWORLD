@@ -40,8 +40,7 @@ $('.down-arrow').click(function() {
 // Set Timer
 
 const gameOver = () => {
-	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/reset.html')
-	sessionStorage.clear()
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/reset.html');
 	console.log('hello')
 }
 
@@ -91,7 +90,7 @@ $(document).ready(function() {
 	let blobName = sessionStorage.getItem("blobName");
 	let blobEl = $(`<p>${blobName}<p>`)
 	$('#blob').after(blobEl)
-	
+	sessionStorage.setItem("newName", blobName);
 })
 
 // Navigate with keys
@@ -183,3 +182,11 @@ window.onload = init;
 //     $( 'body' ).append( html );
 // });
 
+// Submit
+
+$("#restart").click(function(event) {
+	event.preventDefault()
+	let test = sessionStorage.getItem("newName");
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html');
+	console.log(test)
+});
