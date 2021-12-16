@@ -5,6 +5,7 @@ body {
 	height: 100vH;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 .gameover {
@@ -24,6 +25,7 @@ button {
 	text-align: center;
 	color: #ffffff;
 }
+
 h1 {
 	font-family: shuriken-std, sans-serif;
 	font-weight: 400;
@@ -33,4 +35,40 @@ h1 {
 	text-shadow: 2px 2px #000000;
 	-webkit-text-stroke: .5px #000000;
 	text-transform: uppercase;
+}
+
+input {
+	padding: 20px;
+	background-color: rgba(255, 255, 255, 0.4);
+	border: .5px solid #ffffff;
+}
+
+input:focus {
+	outline-color: #fffcf3;
+}
+
+input[type=text] {
+	color: #ffffff;
+	font-family: platelet, sans-serif;
+	font-size: 1.25em;
+	text-align: center;
+}
+
+input[type=submit] {
+	color: #ffffff;
+	font-family: platelet, sans-serif;
+	font-size: 1.25em;
+	text-align: center;
+}
+
+input::-webkit-input-placeholder {
+	color: #ffffff;
+	font-family: platelet, sans-serif;
+	font-size: 1.25em;
+	text-align: center;
+}
+
+#renameForm {
+	display: none;
+	padding: 20px;
 }

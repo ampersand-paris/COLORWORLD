@@ -22,7 +22,9 @@ $('form').on('mouseover', (e) => {
 	  url: `https://x-colors.herokuapp.com/api/random/`,
  }).then(
 	  (colorData) => {
-		  $('body').css("background-color", colorData.hex);
+		  if ($(location).attr('href') === 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/index.html'){
+			$('body').css("background-color", colorData.hex);
+		  }
 	  },
 	  (error) => {
 		  console.log("bad request: ", error);
@@ -209,5 +211,12 @@ $("#restart").click(function(event) {
 	event.preventDefault()
 	let test = sessionStorage.getItem("newName");
 	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html');
-	console.log(test)
+});
+
+// Rename
+
+$("#rename").click(function(event) {
+	event.preventDefault()
+	$('#rename').remove();
+	$('#renameForm').css('display', 'block');
 });
