@@ -67,8 +67,9 @@ const nightFall = () => {
 	console.log(gradientInterval)
 }
 
+const timeout = setTimeout(gameOver, 120000)
 if (location.href == "file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html") {
-	$(window).ready(setTimeout(gameOver, 120000));
+	$(window).ready(timeout);
 	// for (let i = 0; i < 100; i++) {
 	// let percentage = i;
 	$(window).ready(setInterval(nightFall, 5000))
@@ -193,8 +194,11 @@ function comparePosition() {
 
 function winCondition() {
 	if (winningArray.length === 7) {
-	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/index.html');
-}
+		clearTimeout(timeout);
+		$('#night').css('display', 'none');
+		$('body').css('background', 'white')
+		$('.savedColor').toggleClass('active');
+	}
 }
 
 
@@ -204,6 +208,13 @@ function winCondition() {
 // }
 
 window.onload = init;
+
+// Home
+
+$("#home").click(function(event) {
+	event.preventDefault()
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/index.html');
+});
 
 // Restart
 
