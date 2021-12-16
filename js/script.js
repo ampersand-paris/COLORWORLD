@@ -65,13 +65,11 @@ const nightFall = () => {
 	console.log(gradientInterval)
 }
 
-nightFall()
-
 if (location.href == "file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html") {
-	//$(window).ready(setTimeout(gameOver, 120000));
+	$(window).ready(setTimeout(gameOver, 120000));
 	// for (let i = 0; i < 100; i++) {
 	// let percentage = i;
-	//$(window).ready(setInterval(nightFall, 5000))
+	$(window).ready(setInterval(nightFall, 5000))
 }
 
 
@@ -109,38 +107,49 @@ function getKeyAndMove(e) {
 			moveLeft();
 			getPositions()
 			comparePosition()
+			winCondition()
 			break;
 		case 38: //Up arrow key
 			moveUp();
 			getPositions()
 			comparePosition()
+			winCondition()
 			break;
 		case 39: //right arrow key
 			moveRight();
 			getPositions()
 			comparePosition()
+			winCondition()
 			break;
 		case 40: //down arrow key
 			moveDown();
 			getPositions()
 			comparePosition()
+			winCondition()
 			break;
 	}
 }
 
 function moveLeft() {
 	objImage.css('left', parseInt(objImage.css('left')) - 5 + "px");
+	$('#blob').css('transform', 'scaleX(1)');
+	$('.blob-div').css('transform', 'rotate(0deg)');
+	
 }
 function moveUp() {
 	objImage.css('top', parseInt(objImage.css('top')) - 5 + "px");
+	$('#blob').css('transform', 'scaleX(1)');
+	$('.blob-div').css('transform', 'rotate(90deg)');
 }
 function moveRight() {
-	console.log('right')
 	objImage.css('left', parseInt(objImage.css('left')) + 5 + "px");
+	$('.blob-div').css('transform', 'rotate(0deg)');
+	$('.blob-div').css('transform', 'scaleX(-1)');
 }
 function moveDown() {
-	console.log('right')
 	objImage.css('top', parseInt(objImage.css('top')) + 5 + "px");
+	$('.blob-div').css('transform', 'rotate(270deg)');
+	$('#blob').css('transform', 'scaleX(1)');
 }
 function getPositions() {
     var pos, width, height;
@@ -156,6 +165,11 @@ function getPositionsOrbs() {
     height = $('#red').height();
     console.log(pos);
 }
+
+// Overlap Detection 
+
+let winningArray = [];
+
 function comparePosition() {
 	if (
 		$('.color').position().left < $('.blob-div').position().left + $('.blob-div').width() &&
@@ -165,6 +179,7 @@ function comparePosition() {
 		) {
         // collision detected!
         let removedColor = $('.color').attr('id');
+		winningArray.push(removedColor)
 		$(`#${removedColor}`).remove()
     } else {
         // no collision
@@ -172,25 +187,23 @@ function comparePosition() {
 }
 }
 
+// Win Conditions
 
+function winCondition() {
+	if (winningArray.length === 7) {
+	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/index.html');
+}
+}
+
+
+
+// function addGradient() {
+// 	$('#blob').css('background', `linear-gradient(to right, ${removedColor} 1%, transparent`);
+// }
 
 window.onload = init;
 
-// Overlap Detection 
-
-// function comparePosition() {
-// 	if ($('#red').position().left < $('.blob-div').position().left + $('.blob-div').width() &&
-// 		$('#red').position().left + $('#red').width() > $('.blob-div').position().left &&
-//         $('#red').position().top < $('.blob-div').position().top + $('.blob-div').height() &&
-//         $('#red').position().height + $('#red').height() > $('.blob-div').position().top) {
-//         // collision detected!
-//         $('#red').color("green");
-//     } else {
-//         // no collision
-//         $('#red').color("blue");
-// }
-// }
-// Submit
+// Restart
 
 $("#restart").click(function(event) {
 	event.preventDefault()
