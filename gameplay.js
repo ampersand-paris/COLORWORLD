@@ -53,6 +53,42 @@ $(window).ready(timeout);
 // -- -- Interval for Nightfall animation
 $(window).ready(setInterval(nightFall, 5000))
 
+
+// -- Holes
+// -- Hole animation
+
+const moveTopHole = () => {
+	if ($('#top').position().left > 201) {
+		$('#top').animate({
+			left: "-=50%",
+		  }, 5000, function() {
+		});
+	} else if ($('#top').position().left < 201) {
+		$('#top').animate({
+			left: "+=50%",
+		  }, 5000, function() {
+		});
+	}
+}
+
+const moveBottomHole = () => {
+	if ($('#bottom').position().left > 201) {
+		$('#bottom').animate({
+			left: "-=50%",
+		  }, 5000, function() {
+		});
+	} else if ($('#bottom').position().left < 201) {
+		$('#bottom').animate({
+			left: "+=50%",
+		  }, 5000, function() {
+		});
+	}
+}
+
+$(document).ready(setInterval(moveTopHole, 8000));
+$(document).ready(setInterval(moveBottomHole, 10000));
+
+
 // -- Navigate with arrow keys
 // -- -- Places the blob in the center of the gameboard
 

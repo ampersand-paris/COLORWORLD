@@ -65,6 +65,24 @@ p {
 
 /* Color divs */
 
+.hole {
+	background: #000000;
+	left: 200px;
+}
+
+#top {
+	width: 100px;
+	height: 100px;
+	top: 25%;
+	position: absolute;
+}
+
+#bottom {
+	width: 200px;
+	height: 50px;
+	top: 75%;
+	position: absolute;
+}
 
 .color {
 	border: 1px solid #000000;
