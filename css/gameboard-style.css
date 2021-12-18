@@ -32,6 +32,7 @@ button {
 
 #blob {
 	width: 100px;
+	background-size: cover;
 }
 
 .blob-div{

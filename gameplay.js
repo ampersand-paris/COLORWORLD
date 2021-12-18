@@ -142,6 +142,8 @@ function getColorPosition() {
     height = $('#red').height();
 }
 
+
+
 // -- Overlap Detection 
 // -- -- Function that compares positoin of the blob to the colors
 
@@ -167,8 +169,15 @@ function comparePosition() {
 		) {
         // collision detected
         let removedColor = $('.color').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
 		winningArray.push(removedColor)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
 		$(`#${removedColor}`).remove()
+		addGradient()
     } else {
         // no collision
         $('#red').css('background-color', 'red');
@@ -206,9 +215,6 @@ $("#restart").click(function(event) {
 	$(location).attr('href', 'file:///Users/andrewpester/seirfx119/projects/COLORWORLD/gameplay.html');
 });
 
-// function addGradient() {
-// 	$('#blob').css('background', `linear-gradient(to right, ${removedColor} 1%, transparent`);
-// }
 
 
 
