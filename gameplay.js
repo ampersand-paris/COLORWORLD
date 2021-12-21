@@ -3,7 +3,10 @@
 // const topPosition = () => {
 // 	console.log($('#top').position())
 // }
-$(window).ready(setInterval(compareHolePosition, 50))
+
+const interval = setInterval(compareHolePosition, 50);
+
+$(window).ready(interval)
 
 // -- Blob Name
 // -- -- Grabs name from session storage and appends to the blob
@@ -52,12 +55,12 @@ const gameOver = () => {
 // == Timers
 // == == Gameover timer. Player has 2 minutes to collect all the colors
 
-// const timeout = setTimeout(gameOver, 120000)
+const timeout = setTimeout(gameOver, 120000)
 
-// $(window).ready(timeout);
+$(window).ready(timeout);
 
 // -- -- Interval for Nightfall animation
-// $(window).ready(setInterval(nightFall, 5000))
+$(window).ready(setInterval(nightFall, 5000))
 
 
 // -- Holes
@@ -143,14 +146,14 @@ function getKeyAndMove(e) {
 		case 39: //right arrow key
 			moveRight();
 			getBlobPosition()
-			compareColorPosition
+			compareColorPosition()
 			winCondition()
 			break;
 		case 40: //down arrow key
 			moveDown();
 			getBlobPosition()
-			compareColorPosition()			
-			winCondition()
+			compareColorPosition()	
+			winCondition()		
 			break;
 	}
 }
@@ -203,16 +206,64 @@ function getColorPosition() {
 
 // -- Overlap Detection 
 // -- -- Function that compares positoin of the blob to the colors
+let colorPositionLeft = [];
+let colorPositionTop = [];
+let colorPositionWidth = [];
+let colorPositionHeight = [];
+
+function getColorPositions() {
+	$('.color').each(function () {
+		colorPositionLeft.push($(this).position().left);
+		colorPositionTop.push($(this).position().top);
+		colorPositionWidth.push($(this).position().left + $(this).width());
+		colorPositionHeight.push($(this).position().top + $(this).height());
+	})
+}
+
+getColorPositions()
+console.log(colorPositionLeft, colorPositionTop, colorPositionWidth, colorPositionHeight)
 
 let winningArray = [];
 
 function compareColorPosition() {
 	// Color Position Detection
-	
-	let colorLeft = $('.color').position().left;
-	let colorTop = $('.color').position().top;
-	let colorPositionWidth = $('.color').position().left + $('.color').width();
-	let colorPositionHeight = $('.color').position().top + $('.color').height();
+	// Red
+	let redLeft = colorPositionLeft[0];
+	let redTop = colorPositionTop[0];
+	let redPositionWidth = colorPositionWidth[0];
+	let redPositionHeight = colorPositionHeight[0];
+	// Orange
+	let orangeLeft = colorPositionLeft[1];
+	let orangeTop = colorPositionTop[1];
+	let orangePositionWidth = colorPositionWidth[1];
+	let orangePositionHeight = colorPositionHeight[1];
+	// Yellow
+	let yellowLeft = colorPositionLeft[2];
+	let yellowTop = colorPositionTop[2];
+	let yellowPositionWidth = colorPositionWidth[2];
+	let yellowPositionHeight = colorPositionHeight[2];
+	// Green
+	let greenLeft = colorPositionLeft[3];
+	let greenTop = colorPositionTop[3];
+	let greenPositionWidth = colorPositionWidth[3];
+	let greenPositionHeight = colorPositionHeight[3];
+	// Blue
+	let blueLeft = colorPositionLeft[4];
+	let blueTop = colorPositionTop[4];
+	let bluePositionWidth = colorPositionWidth[4];
+	let bluePositionHeight = colorPositionHeight[4];
+	// Indigo
+	let indigoLeft = colorPositionLeft[5];
+	let indigoTop = colorPositionTop[5];
+	let indigoPositionWidth = colorPositionWidth[5];
+	let indigoPositionHeight = colorPositionHeight[5];
+	// Violet
+	let violetLeft = colorPositionLeft[6];
+	let violetTop = colorPositionTop[6];
+	let violetPositionWidth = colorPositionWidth[6];
+	let violetPositionHeight = colorPositionHeight[6];
+	console.log(orangeLeft, orangeTop, orangePositionWidth, orangePositionHeight)
+
 	// Blob Position Detection
 	let blobLeft = $('.blob-div').position().left;
 	let blobTop = $('.blob-div').position().top;
@@ -220,13 +271,16 @@ function compareColorPosition() {
 	let blobPositionHeight = $('.blob-div').position().top + $('.blob-div').height();
 	// Overlapping conditions
 	if (
-		colorLeft < blobPositionWidth &&
-		colorPositionWidth > blobLeft &&
-        colorTop < blobPositionHeight &&
-        colorPositionHeight > blobTop
+		redLeft < blobPositionWidth &&
+		redPositionWidth > blobLeft &&
+        redTop < blobPositionHeight &&
+        redPositionHeight > blobTop 
 		) {
+			if (jQuery.inArray("red", winningArray) > -1) {
+				console.log('in array')
+			} else {
         // collision detected
-        let removedColor = $('.color').attr('id');
+        let removedColor = $('#red').attr('id');
 		// -- Wild Wild West
 		// -- -- Adding gradient to blob		
 		winningArray.push(removedColor)
@@ -237,9 +291,136 @@ function compareColorPosition() {
 		}	
 		$(`#${removedColor}`).remove()
 		addGradient()
+		} } else if (
+		orangeLeft < blobPositionWidth &&
+		orangePositionWidth > blobLeft &&
+        orangeTop < blobPositionHeight &&
+        orangePositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("orange", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#orange').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	} } else if (
+		yellowLeft < blobPositionWidth &&
+		yellowPositionWidth > blobLeft &&
+        yellowTop < blobPositionHeight &&
+        yellowPositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("yellow", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#yellow').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	} } else if (
+		greenLeft < blobPositionWidth &&
+		greenPositionWidth > blobLeft &&
+        greenTop < blobPositionHeight &&
+        greenPositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("green", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#green').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	} } else if (
+		blueLeft < blobPositionWidth &&
+		bluePositionWidth > blobLeft &&
+        blueTop < blobPositionHeight &&
+        bluePositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("blue", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#blue').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	} } else if (
+		indigoLeft < blobPositionWidth &&
+		indigoPositionWidth > blobLeft &&
+        indigoTop < blobPositionHeight &&
+        indigoPositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("indigo", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#indigo').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	} } else if (
+		violetLeft < blobPositionWidth &&
+		violetPositionWidth > blobLeft &&
+        violetTop < blobPositionHeight &&
+        violetPositionHeight > blobTop 
+		) {
+			if (jQuery.inArray("violet", winningArray) > -1) {
+				console.log('in array')
+			} else {
+        // collision detected
+        let removedColor = $('#violet').attr('id');
+		// -- Wild Wild West
+		// -- -- Adding gradient to blob		
+		winningArray.push(removedColor)
+		console.log(winningArray)
+		let colorString = winningArray.join(", ");
+		function addGradient() {
+			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
+		}	
+		$(`#${removedColor}`).remove()
+		addGradient()
+	}
     } else {
+	}
         // no collision
-	}	
 }
 
 // -- Hole Comparison
@@ -315,9 +496,13 @@ function winCondition() {
 	if (winningArray.length === 7) {
 		// Stops timer
 		clearTimeout(timeout);
+		clearInterval(interval);
 		// 'You saved color!'
 		$('#night').css('display', 'none');
 		$('body').css('background', 'white')
+		if ($('.savedColor').hasClass('active')) {
+			return
+		}
 		$('.savedColor').toggleClass('active');
 		$('.hole').remove();
 	}
