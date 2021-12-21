@@ -131,49 +131,25 @@ function getKeyAndMove(e) {
 		case 37: //left arrow key
 			moveLeft();
 			getBlobPosition()
-			comparePosition($('#red'))
-			comparePosition($('#orange'))
-			comparePosition($('#yellow'))
-			comparePosition($('#green'))
-			comparePosition($('#blue'))
-			comparePosition($('#indigo'))
-			comparePosition($('#violet'))
+			compareColorPosition()
 			winCondition()
 			break;
 		case 38: //Up arrow key
 			moveUp();
 			getBlobPosition()
-			comparePosition($('#red'))
-			comparePosition($('#orange'))
-			comparePosition($('#yellow'))
-			comparePosition($('#green'))
-			comparePosition($('#blue'))
-			comparePosition($('#indigo'))
-			comparePosition($('#violet'))
+			compareColorPosition()
 			winCondition()
 			break;
 		case 39: //right arrow key
 			moveRight();
 			getBlobPosition()
-			comparePosition($('#red'))
-			comparePosition($('#orange'))
-			comparePosition($('#yellow'))
-			comparePosition($('#green'))
-			comparePosition($('#blue'))
-			comparePosition($('#indigo'))
-			comparePosition($('#violet'))
+			compareColorPosition
 			winCondition()
 			break;
 		case 40: //down arrow key
 			moveDown();
 			getBlobPosition()
-			comparePosition($('#red'))
-			comparePosition($('#orange'))
-			comparePosition($('#yellow'))
-			comparePosition($('#green'))
-			comparePosition($('#blue'))
-			comparePosition($('#indigo'))
-			comparePosition($('#violet'))
+			compareColorPosition()			
 			winCondition()
 			break;
 	}
@@ -230,12 +206,13 @@ function getColorPosition() {
 
 let winningArray = [];
 
-function comparePosition(id) {
+function compareColorPosition() {
 	// Color Position Detection
-	let colorLeft = id.position().left;
-	let colorTop = id.position().top;
-	let colorPositionWidth = id.position().left + $('.color').width();
-	let colorPositionHeight = id.position().top + $('.color').height();
+	
+	let colorLeft = $('.color').position().left;
+	let colorTop = $('.color').position().top;
+	let colorPositionWidth = $('.color').position().left + $('.color').width();
+	let colorPositionHeight = $('.color').position().top + $('.color').height();
 	// Blob Position Detection
 	let blobLeft = $('.blob-div').position().left;
 	let blobTop = $('.blob-div').position().top;
@@ -249,7 +226,7 @@ function comparePosition(id) {
         colorPositionHeight > blobTop
 		) {
         // collision detected
-        let removedColor = id.attr('id');
+        let removedColor = $('.color').attr('id');
 		// -- Wild Wild West
 		// -- -- Adding gradient to blob		
 		winningArray.push(removedColor)
@@ -262,8 +239,7 @@ function comparePosition(id) {
 		addGradient()
     } else {
         // no collision
-        $('#red').css('background-color', 'red');
-	}
+	}	
 }
 
 // -- Hole Comparison
@@ -317,11 +293,13 @@ function compareHolePosition() {
 		let colorString = winningArray.join(", ");
 		function addGradient() {
 			$('#blob').css('background', `linear-gradient(to right, ${colorString}, transparent)`);
-		}	
+		}
+	
 		if (winningArray.length < 1){
-			return 
+			$('#blob').css('background', `none`);
+			$('<div />').addClass('color').attr('id', `${droppedColor}`).appendTo('body');
 		} else {
-			$('<div />').addClass('color').attr('id', 'red').appendTo('body');
+			$('<div />').addClass('color').attr('id', `${droppedColor}`).appendTo('body');
 		}
 		addGradient()
     } else {
