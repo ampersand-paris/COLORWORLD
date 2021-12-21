@@ -33,6 +33,7 @@ button {
 #blob {
 	width: 100px;
 	background-size: cover;
+	z-index: 999;
 }
 
 .blob-div{
@@ -61,6 +62,7 @@ p {
 	background: linear-gradient(to top right, #000000 0%, transparent);
 	opacity: 0%;
 	background-size: cover;
+	z-index: 998;
 }
 
 /* Color divs */
@@ -68,6 +70,7 @@ p {
 .hole {
 	background: #000000;
 	left: 200px;
+	z-index: 990;
 }
 
 #top {
@@ -103,44 +106,44 @@ p {
 #red {
 	background-color: red;
 	left: 50%;
-	top: 0%;
+	top: 10%;
 }
 
 #orange {
 	background-color: orange;
-	left: 0%;
+	left: 10%;
 	top: 50%;
 	
 }
 
 #yellow {
 	background-color: yellow;
-	left: 0%;
-	top: 80%;
+	left: 20%;
+	top: 77%;
 }
 
 #green {
 	background-color: green;
-	left:20%;
-	bottom: 0%;
+	left: 30%;
+	bottom: 10%;
 }
 
 #blue {
 	background-color: blue;
-	right: 0%;
-	bottom: 0%;
+	right: 10%;
+	bottom: 10%;
 }
 
 #indigo {
 	background-color: indigo;
-	right: 0%;
+	right: 30%;
 	top: 80%;
 }
 
 #violet {
 	background-color: violet;
-	right: 0%;
-	top: 50%;
+	right: 20%;
+	top: 35%;
 }
 
 /* Gameboard */

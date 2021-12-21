@@ -499,10 +499,10 @@ function winCondition() {
 		clearInterval(interval);
 		// 'You saved color!'
 		$('#night').css('display', 'none');
-		$('body').css('background', 'white')
+		$('body').css('background', 'white');
 		if ($('.savedColor').hasClass('active')) {
 			return
-		}
+		} 
 		$('.savedColor').toggleClass('active');
 		$('.hole').remove();
 	}
